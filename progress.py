@@ -52,7 +52,7 @@ def progress(fp: str):
                     if mode[0] == "EOI":   # Identify image end
                         END = True
 
-                    if mode[0] == "DHT":   # Start of huffman
+                    if mode[0] == "SOS":   # Start of huffman
 
                         current_pos = rData.tell()
                         stream += rData.read(1)
@@ -62,9 +62,10 @@ def progress(fp: str):
                             continue
 
                         if counterData == 1: # if second time the scan ended and save
+                            # TODO : Check for case with multiple dhts
                             rData.seek(current_pos-1)
                             scan = stream[:-1] + b'\xd9'
-                            stream = stream[:-1]
+                            stream = stream[:-2]
                             scans.append(scan)
                             counterData = 0
 
@@ -82,7 +83,7 @@ def progress(fp: str):
 
 if __name__ == '__main__':
     # READ a file
-    fp = open("JPEG_example_flower.jpg", 'rb')
+    fp = open("progress.jpg", 'rb')
 
     data= fp.read()
     print(data.hex())
@@ -94,10 +95,10 @@ if __name__ == '__main__':
     #
     # print(image)
     import matplotlib.pyplot as plt
-    data = progress("JPEG_example_flower.jpg")
-    # for i in data:
-    #     print(i)
-    # print(data))
+    data = progress("progress.jpg")
+    for i in data:
+        print(i.hex())
+    # print(data[])
     #
     # s = BytesIO(data)
     # print(type(s))
