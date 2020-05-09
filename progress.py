@@ -3,6 +3,7 @@ from io import BytesIO
 
 MARKER = {
     b'\xff\xc4': ("DHT", "Define Huffman table"),
+    b'\xff\xc2': ("SOF2", "Progressive DCT"),
     b'\xff\xd9' : ("EOI", "End of image"),
     b'\xff\xda': ("SOS", "Start of scan"),
 }
@@ -19,39 +20,54 @@ def progress(fp: str):
     - **fp** :  A str file path
 
     """
-    # rData = open(fp, 'rb')
     scans= []
     with open(fp, 'rb') as rData:
-        # l = len(rData.read())
-        # rData.seek(0)
+
         stream = b''
         END = False
-        counter = 0
+        counterData = 0
 
         while not END:
-            current_Byte = rData.read(1)
-            stream += current_Byte
+            #
+            # Continuously parsing the image file till
+            # the end of the end of the image
+            #
 
-            if int.from_bytes(current_Byte, 'big') == 255:
+            current_Byte = rData.read(1)  # Read one byte at a time
+            stream += current_Byte  # Update Stream
+
+            if current_Byte == b'\xff':
+                # Check for marker start
+
                 current_pos = rData.tell()
-                indicator = current_Byte + rData.read(1)
-                rData.seek(current_pos)
+                indicator = current_Byte + rData.read(1)  # Read the next byte
+                rData.seek(current_pos) # Reset stream Position
 
-                if indicator in MARKER:
+                if indicator in MARKER: # If False -- Ignore Spacings and Junk
                     mode = MARKER[indicator]
-                    if mode[0] == "EOI":
+
+                    if mode[0] == "SOF2":  # Identify Progressive marker
+                        print(mode[1])
+
+                    if mode[0] == "EOI":   # Identify image end
                         END = True
-                    elif mode[0] == "SOS":
+
+                    if mode[0] == "DHT":   # Start of huffman
+
+                        current_pos = rData.tell()
                         stream += rData.read(1)
-                        if counter == 0:
-                            counter = 1
+
+                        if counterData == 0: # if first Occurance Ignore
+                            counterData = 1
                             continue
-                        else:
-                            counter = 0
-                            # END = True
+
+                        if counterData == 1: # if second time the scan ended and save
+                            rData.seek(current_pos-1)
                             scan = stream[:-1] + b'\xd9'
+                            stream = stream[:-1]
                             scans.append(scan)
-                            # print(stream)
+                            counterData = 0
+
 
     return scans
 
@@ -66,10 +82,10 @@ def progress(fp: str):
 
 if __name__ == '__main__':
     # READ a file
-    fp = open("huff_simple0-progressive.jpeg", 'rb')
+    fp = open("JPEG_example_flower.jpg", 'rb')
 
     data= fp.read()
-    print(data)
+    print(data.hex())
     #
     # stream = BytesIO(data[:-10])
     # print(stream)
@@ -78,9 +94,9 @@ if __name__ == '__main__':
     #
     # print(image)
     import matplotlib.pyplot as plt
-    data = progress("huff_simple0-progressive.jpeg")
-    for i in data:
-        print(i)
+    data = progress("JPEG_example_flower.jpg")
+    # for i in data:
+    #     print(i)
     # print(data))
     #
     # s = BytesIO(data)
