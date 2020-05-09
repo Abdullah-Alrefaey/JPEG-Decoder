@@ -6,6 +6,7 @@ MARKER = {
     b'\xff\xc2': ("SOF2", "Progressive DCT"),
     b'\xff\xd9' : ("EOI", "End of image"),
     b'\xff\xda': ("SOS", "Start of scan"),
+    b'\xff\xc0': ("SOF0", "Baseline DCT")
 }
 
 def progress(fp: str):
@@ -46,6 +47,10 @@ def progress(fp: str):
                 if indicator in MARKER: # If False -- Ignore Spacings and Junk
                     mode = MARKER[indicator]
 
+                    if mode[0] == "SOF0":
+                        raise TypeError ("Not a progressive jpg")
+
+
                     if mode[0] == "SOF2":  # Identify Progressive marker
                         print(mode[1])
 
@@ -83,7 +88,7 @@ def progress(fp: str):
 
 if __name__ == '__main__':
     # READ a file
-    fp = open("progress.jpg", 'rb')
+    fp = open("jpg100.jpg", 'rb')
 
     data= fp.read()
     print(data.hex())
@@ -95,7 +100,7 @@ if __name__ == '__main__':
     #
     # print(image)
     import matplotlib.pyplot as plt
-    data = progress("progress.jpg")
+    data = progress("jpg100.jpg")
     for i in data:
         print(i.hex())
     # print(data[])
