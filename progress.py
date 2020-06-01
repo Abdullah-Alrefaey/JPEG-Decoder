@@ -88,7 +88,6 @@ def save_images(images_list: list, file: str):
     """
     for indx, image in enumerate(images_list):
         if isinstance(image, bytes):
-            print("SAVING ... ")
             stream = BytesIO(image)
             jpeg = Image.open(stream)
             jpeg.save(file+'/out%s.jpg' % indx)
