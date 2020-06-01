@@ -49,9 +49,9 @@ class JpegDecoder(ui.Ui_MainWindow):
         """
         self.statusbar.showMessage("Loading Image File")
         self.loaded_image, self.loaded_image_format = QtWidgets.QFileDialog.getOpenFileName(None,
-                                                                                            "Load Audio File",
+                                                                                            "Load Image File",
                                                                                             filter="*.jpg;; *.jpeg")
-        self.logger.debug("Image File %s Loaded")
+        self.logger.debug("Image File Loaded")
 
         # CHECK CONDITIONS
         if self.loaded_image == "":

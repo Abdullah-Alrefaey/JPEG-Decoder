@@ -1,20 +1,30 @@
-2020-05-15 00:43:52,567 Image File %s Loaded
-2020-05-15 00:43:52,567 starting extraction of data
-2020-05-15 00:43:52,567 Progressive Image ..
-2020-05-15 00:43:52,567 Loaded image /home/ahmad/PycharmProjects/JPEG-Decoder/tests/index.jpeg is not progressive 
-2020-05-15 00:43:52,575 messege shown with Warning ! You need to load a progressive Image 
-2020-05-15 00:43:56,581 Image File %s Loaded
-2020-05-15 00:43:56,581 starting extraction of data
-2020-05-15 00:43:56,581 Progressive Image ..
-2020-05-15 00:43:56,929 Loaded Image /home/ahmad/PycharmProjects/JPEG-Decoder/tests/sample.jpg
-2020-05-15 00:43:56,930 saving 
-2020-05-15 00:43:57,099 Done
-2020-05-15 00:43:57,100 Showing results/out0.jpg
-2020-05-15 00:43:57,104 Showing results/out1.jpg
-2020-05-15 00:43:57,108 Showing results/out2.jpg
-2020-05-15 00:43:57,112 Showing results/out3.jpg
-2020-05-15 00:43:57,117 Showing results/out4.jpg
-2020-05-15 00:43:57,121 Showing results/out5.jpg
-2020-05-15 00:43:57,126 Showing results/out6.jpg
-2020-05-15 00:43:57,130 Showing results/out7.jpg
-2020-05-15 00:43:57,135 Showing results/out8.jpg
+2020-06-01 21:16:35,933 Image File Loaded
+2020-06-01 21:16:35,933 starting extraction of data
+2020-06-01 21:16:35,933 Progressive Image ..
+2020-06-01 21:16:36,259 Loaded Image /home/ahmad/PycharmProjects/JPEG-Decoder/tests/sample.jpg
+2020-06-01 21:16:36,260 saving 
+2020-06-01 21:16:36,456 Done
+2020-06-01 21:16:36,456 Showing results/out0.jpg
+2020-06-01 21:16:36,461 Showing results/out1.jpg
+2020-06-01 21:16:36,466 Showing results/out2.jpg
+2020-06-01 21:16:36,472 Showing results/out3.jpg
+2020-06-01 21:16:36,477 Showing results/out4.jpg
+2020-06-01 21:16:36,482 Showing results/out5.jpg
+2020-06-01 21:16:36,488 Showing results/out6.jpg
+2020-06-01 21:16:36,493 Showing results/out7.jpg
+2020-06-01 21:16:36,498 Showing results/out8.jpg
+2020-06-01 21:17:05,082 Image File Loaded
+2020-06-01 21:17:05,082 starting extraction of data
+2020-06-01 21:17:05,082 Progressive Image ..
+2020-06-01 21:17:05,132 Loaded Image /home/ahmad/PycharmProjects/JPEG-Decoder/tests/progress.jpg
+2020-06-01 21:17:05,132 saving 
+2020-06-01 21:17:05,189 Done
+2020-06-01 21:17:05,189 Showing results/out0.jpg
+2020-06-01 21:17:05,191 Showing results/out1.jpg
+2020-06-01 21:17:05,193 Showing results/out2.jpg
+2020-06-01 21:17:05,194 Showing results/out3.jpg
+2020-06-01 21:17:05,196 Showing results/out4.jpg
+2020-06-01 21:17:05,198 Showing results/out5.jpg
+2020-06-01 21:17:05,200 Showing results/out6.jpg
+2020-06-01 21:17:05,202 Showing results/out7.jpg
+2020-06-01 21:17:05,204 Showing results/out8.jpg

@@ -1,4 +1,4 @@
-from PIL import Image, JpegImagePlugin
+from PIL import Image
 from io import BytesIO
 
 MARKER = {
@@ -71,7 +71,6 @@ def progress(fp: str):
                             stream = stream[:-2]
                             scans.append(scan)
                             counterData = 0
-                            print(stream.hex())
     return scans
 
 
