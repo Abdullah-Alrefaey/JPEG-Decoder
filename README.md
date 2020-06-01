@@ -14,7 +14,7 @@ JPEG file consists of a simple successions of markers, listing a few :
 | EOI    | b'\xff\xd9' | End of image                                                 |
 | SOF0   | b'\xff\xc0' | Baseline DCT, indicates a normal baseline jpeg               |
 
-all markers could be found easily on [wikipedia]([I'm an inline-style link](https://www.google.com)) here are list of important ones that we used.
+all markers could be found easily on [wikipedia](https://www.google.com) here are list of important ones that we used.
 
 Progressive JPEGs are very close to a baseline JPEG the only difference is that it consists of multiple scans with multiple dht encodings. Extracting each scan will result in a slightly enhanced image that the one before. Our algorithm simple extract each scan included in a progressively encoded picture and decode using the help of `pil.Image.JpegImagePlugin` which receives the binary buffer and decode the image. 
 
